@@ -28,7 +28,7 @@ def get_link(session, requested_id):
 @app.route('/', methods=["GET"])
 def main_view():  # put application's code here
 
-    id = request.get["id"]
+    id = request.args.get["id"]
     link = get_link(id)
 
     conn = get_session()
