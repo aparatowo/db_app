@@ -9,6 +9,7 @@ ROOT_DIR = os.path.abspath(
 )
 
 
+
 def _fk_pragma_on_connect(dbapi_con, con_record):
     """
     Turns on foreign keys while connecting to database. Used in SQLAlchemy event listener.
