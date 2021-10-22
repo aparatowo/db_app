@@ -28,15 +28,15 @@ def get_link(session, image_id):
 @app.route('/', methods=["GET"])
 def main_view():  # put application's code here
 
-    image_id = request.args.get["image_id"]
+    image_id = request.args.get("image_id")
 
     return get_link(image_id)
 
 
-@app.route('count/', methods=["GET"])
+@app.route('/count/', methods=["GET"])
 def count_view():
     return get_count()
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0", port=80)
