@@ -5,8 +5,9 @@ from sqlalchemy import event, create_engine
 
 
 ROOT_DIR = os.path.abspath(
-    os.path.join(os.path.dirname(os.path.abspath(__file__)), ".")
+    os.path.join(os.path.dirname(os.path.abspath(__file__)), "../../")
 )
+
 
 
 def _fk_pragma_on_connect(dbapi_con, con_record):

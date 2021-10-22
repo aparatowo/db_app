@@ -21,20 +21,16 @@ def get_count(session):
 
 
 @db_query
-def get_link(session, requested_id):
-    return session.query(Image.id == requested_id).one()
+def get_link(session, image_id):
+    return session.query(Image.link).filter(Image.id == image_id).one()
 
 
 @app.route('/', methods=["GET"])
 def main_view():  # put application's code here
 
-    id = request.get["id"]
-    link = get_link(id)
+    image_id = request.args.get["image_id"]
 
-    conn = get_session()
-    conn.add(Image(link=link))
-
-    return
+    return get_link(image_id)
 
 
 @app.route('count/', methods=["GET"])
