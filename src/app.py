@@ -27,15 +27,16 @@ def get_link(session, image_id):
 
 @app.route('/', methods=["GET"])
 def main_view():  # put application's code here
-
     image_id = request.args.get("image_id")
+    if image_id is not None:
 
-    return get_link(image_id)
+        return get_link(image_id)
+    return {"response": "sample"}
 
 
 @app.route('/count/', methods=["GET"])
 def count_view():
-    return get_count()
+    return {'count': get_count()}
 
 
 if __name__ == '__main__':

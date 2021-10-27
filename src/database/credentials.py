@@ -6,19 +6,14 @@ import boto3
 import base64
 from botocore.exceptions import ClientError
 
-AWS_ACCESS_KEY = os.environ['AWS_ACCESS_KEY_ID']
-AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
-
 
 def get_secret():
-    secret_name = "arn:aws:secretsmanager:eu-north-1:487278300562:secret:db_app_test-NGFZxL"
+    secret_name = "arn:aws:secretsmanager:eu-north-1:487278300562:secret:db_app_test_2-HOGefh"
     region_name = "eu-north-1"
 
     # Create a Secrets Manager client
     session = boto3.session.Session()
     client = session.client(
-        aws_access_key_id=AWS_ACCESS_KEY,
-        aws_secret_access_key=AWS_SECRET_ACCESS_KEY,
         service_name='secretsmanager',
         region_name=region_name
     )
@@ -61,6 +56,3 @@ def get_secret():
             return base64.b64decode(get_secret_value_response['SecretBinary'])
 
     # Your code goes here.
-
-secrets = get_secret()
-print(secrets)
