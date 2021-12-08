@@ -8,8 +8,9 @@ from botocore.exceptions import ClientError
 
 
 def get_secret():
-    secret_name = "arn:aws:secretsmanager:eu-north-1:487278300562:secret:db_app_test_2-HOGefh"
-    region_name = "eu-north-1"
+
+    secret_name = "rnitychoruk-db_app_test"
+    region_name = "eu-central-1"
 
     # Create a Secrets Manager client
     session = boto3.session.Session()
