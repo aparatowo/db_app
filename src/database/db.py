@@ -1,5 +1,5 @@
 import os
-from credentials import get_secret
+from database.credentials import get_secret
 from database.models import Base
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import event, create_engine
