@@ -31,7 +31,7 @@ def get_session(echo=False):
     db_name = secrets["dbInstanceIdentifier"]
     db_address = secrets["host"]
     db_port = secrets['port']
-    db_path = f"postgresql+psycopg2://{db_user}:{db_pass}@{db_address}:{db_port}"#/{db_name}"
+    db_path = f"postgresql+psycopg2://{db_user}:{db_pass}@{db_address}:{db_port}/{db_name}"
     engine = create_engine(db_path, echo=echo)
     db_session = sessionmaker(bind=engine)
     Base.metadata.create_all(engine)
