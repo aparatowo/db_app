@@ -9,7 +9,7 @@ from botocore.exceptions import ClientError
 
 def get_secret():
 
-    secret_name = "rnitychoruk-db_app_test_2"
+    secret_name = "rnitychoruk-db_app_test"
     region_name = "eu-central-1"
 
     # Create a Secrets Manager client
@@ -48,12 +48,12 @@ def get_secret():
             # We can't find the resource that you asked for.
             # Deal with the exception here, and/or rethrow at your discretion.
             raise e
-        else:
+    else:
             # Decrypts secret using the associated KMS CMK.
             # Depending on whether the secret is a string or binary, one of these fields will be populated.
-            if 'SecretString' in get_secret_value_response:
-                return get_secret_value_response['SecretString']
-            else:
-                return base64.b64decode(get_secret_value_response['SecretBinary'])
+        if 'SecretString' in get_secret_value_response:
+            return get_secret_value_response['SecretString']
+        else:
+            return base64.b64decode(get_secret_value_response['SecretBinary'])
 
     # Your code goes here.
