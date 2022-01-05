@@ -1,5 +1,5 @@
 #!/bin/bash
-yum update -y && su ec2-user && aws s3 cp s3://rnitychoruk-git-like-bucket/db_app-master.zip /home/ec2-user/ && unzip db_app-master.zip
+yum update -y && aws s3 cp s3://rnitychoruk-git-like-bucket/db_app-master.zip /home/ec2-user/ && cd /home/ec2-user/ && unzip db_app-master.zip
 cd db_app-master && pip3 install -r requirements.txt && cd src
 echo '[Unit]
 Description=db_app service
