@@ -5,7 +5,7 @@ echo '[Unit]
 Description=db_app service
 
 [Service]
-WorkingDirectory=./db_app-master/src/ && python3 -m app
+WorkingDirectory=/home/ec2-user/db_app-master/src/ && python3 -m app
 
 [Install]
 WantedBy=multi-user.target' > /etc/systemd/system/db_app.service
