@@ -6,6 +6,7 @@ Description=db_app service
 
 [Service]
 WorkingDirectory=/home/ec2-user/db_app-master/src/ && python3 -m app
+Restart=always
 
 [Install]
 WantedBy=multi-user.target' > /etc/systemd/system/db_app.service
