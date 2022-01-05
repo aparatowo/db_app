@@ -5,7 +5,8 @@ echo '[Unit]
 Description=db_app service
 
 [Service]
-WorkingDirectory=/home/ec2-user/db_app-master/src/ && python3 -m app
+WorkingDirectory=/home/ec2-user/db_app-master/src/
+ExecStart=python3 -m app
 Restart=always
 
 [Install]
