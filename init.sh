@@ -6,7 +6,7 @@ Description=db_app service
 
 [Service]
 WorkingDirectory=/home/ec2-user/db_app-master/src/
-ExecStart=/home/ec2-user/db_app-master/src/python3 -m app
+ExecStart=/home/ec2-user/db_app-master/src/run.sh
 Restart=always
 
 [Install]
