@@ -1,12 +1,13 @@
 #!/bin/bash
 yum update -y && aws s3 cp s3://rnitychoruk-git-like-bucket/db_app-master.zip /home/ec2-user/ && cd /home/ec2-user/ && unzip db_app-master.zip
-cd db_app-master && pip3 install -r requirements.txt && cd src
+cd db_app-master && pip3 install -r requirements.txt && cd src && chmod +x run.sh
+
 echo '[Unit]
 Description=db_app service
 
 [Service]
 WorkingDirectory=/home/ec2-user/db_app-master/src/
-ExecStart=/home/ec2-user/db_app-master/src/run.sh
+ExecStart=/usr/bin/python3 /home/ec2-user/db_app-master/src/app.py
 Restart=always
 
 [Install]
