@@ -10,7 +10,7 @@ from botocore.exceptions import ClientError
 
 def get_secret():
 
-    secret_name = "rnitychoruk-db_app_test"
+    secret_name = "rnitychoruk-database_test"
     region_name = "eu-north-1"
 
     # Create a Secrets Manager client
