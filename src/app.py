@@ -9,7 +9,6 @@ def db_query(query):
     def perform_query(*args, **kwargs):
         session = get_session()
         result = query(session, *args, **kwargs)
-        session.commit()
         session.close()
         return result
 
