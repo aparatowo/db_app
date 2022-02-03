@@ -9,6 +9,7 @@ def db_query(query):
     def perform_query(*args, **kwargs):
         session = get_session()
         result = query(session, *args, **kwargs)
+        session.commit()
         session.close()
         return result
 
@@ -24,6 +25,10 @@ def get_count(session):
 def get_link(session, image_id):
     return session.query(Image.link).filter(Image.id == image_id).one()
 
+@db_query
+def add_link(session, image_key):
+    return session.add(Image(link=image_key))
+
 
 @app.route('/', methods=["GET"])
 def main_view():  # put application's code here
@@ -37,6 +42,13 @@ def main_view():  # put application's code here
 @app.route('/count/', methods=["GET"])
 def count_view():
     return {'count': get_count()}
+
+
+@app.route('/add/', methods=["GET"])
+def add_image_link():
+    image_key = request.args.get("image_key")
+    add_link(image_key)
+    return "OK"
 
 
 if __name__ == '__main__':
