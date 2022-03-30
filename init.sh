@@ -1,15 +1,4 @@
 #!/bin/bash
-yum update -y && aws s3 cp s3://rnitychoruk-git-like-bucket/db_app-master.zip /home/ec2-user/ && cd /home/ec2-user/ && unzip db_app-master.zip
-cd db_app-master && pip3 install -r requirements.txt && cd src && chmod +x run.sh
-
-echo '[Unit]
-Description=db_app service
-
-[Service]
-WorkingDirectory=/home/ec2-user/db_app-master/src/
-ExecStart=/usr/bin/python3 /home/ec2-user/db_app-master/src/app.py
-Restart=always
-
-[Install]
-WantedBy=multi-user.target' > /etc/systemd/system/db_app.service
-systemctl enable db_app && systemctl start db_app
+yum update -y && sudo amazon-linux-extras install docker && sudo service docker start && sudo usermod -a -G docker ec2-user
+aws s3 cp s3://rnitychoruk-git-like-bucket/db_app-master.zip /home/ec2-user/ && cd /home/ec2-user/ && unzip db_app-master.zip && cd db_app-master
+docker run -env AWS_REGION=$(aws ssm get-parameters --names REGION_AWS --with-decryption) -env DB_SECRET=$(aws ssm get-parameters --names DB_SECRET --with-decryption) .

@@ -7,11 +7,16 @@ import base64
 import json
 from botocore.exceptions import ClientError
 
+# initial_region_name = "eu-north-1"
+
+AWS_REGION = os.environ['AWS_REGION']
+DB_SECRET = os.environ["DB_SECRET"]
+
 
 def get_secret():
 
-    secret_name = "arn:aws:secretsmanager:eu-north-1:890769921003:secret:rnitychoruk-db-do-oceny-qlm3p5"
-    region_name = "eu-north-1"
+    secret_name = DB_SECRET
+    region_name = AWS_REGION
 
     # Create a Secrets Manager client
     session = boto3.session.Session()
