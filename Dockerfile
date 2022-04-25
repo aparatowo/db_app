@@ -10,8 +10,12 @@ RUN pip3 install -r requirements.txt
 
 ENV FLASK_APP=app.py
 ENV PYTHONPATH "${PYTHONPATH}:${pwd}"
+ENV FLASK_RUN_HOST=0.0.0.0
+ENV AWS_REGION=""
+ENV DB_SECRET=""
+
 
 EXPOSE 5000
 
-CMD python -m flask --host=0.0.0.0
+ENTRYPOINT flask run
 
