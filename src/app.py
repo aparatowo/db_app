@@ -2,12 +2,14 @@ from flask import Flask, request
 from database.db import get_session
 from database.models import Image
 
+
+secrets = get_secret()
 app = Flask(__name__)
 
 
 def db_query(query):
     def perform_query(*args, **kwargs):
-        session = get_session()
+        session = get_session(secrets=secrets)
         result = query(session, *args, **kwargs)
         session.commit()
         session.close()
