@@ -27,6 +27,7 @@ def get_count(session):
 def get_link(session, image_id):
     return session.query(Image.link).filter(Image.id == image_id).one()
 
+
 def add_link(image_key):
     session = get_session()
     session.add(Image(link=image_key))

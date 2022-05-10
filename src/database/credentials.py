@@ -15,7 +15,7 @@ DB_SECRET = os.environ["DB_SECRET"]
 
 def get_secret():
 
-    secret_name = DB_SECRET
+    # secret_name = DB_SECRET
     region_name = AWS_REGION
 
     # Create a Secrets Manager client
