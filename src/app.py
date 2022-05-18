@@ -1,6 +1,7 @@
 from flask import Flask, request
 from database.db import get_session
 from database.models import Image
+from database.credentials import get_secret
 
 
 secrets = get_secret()
